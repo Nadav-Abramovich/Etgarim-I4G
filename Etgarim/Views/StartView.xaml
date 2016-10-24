@@ -1,0 +1,27 @@
+﻿<views:MvxWindowsPage
+    x:Class="Etgarim.Views.StartView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:views="using:Cirrious.MvvmCross.WindowsCommon.Views"
+    mc:Ignorable="d"
+    FlowDirection="RightToLeft"
+    >
+
+    <Grid>
+        <Image Source="/Assets/EtgarimBackground.png" Stretch="UniformToFill" Margin="0,0,0,0"></Image>
+        <!--<Image Source="/Assets/BackgroundEtgarim.png" Stretch="UniformToFill" Margin="0,0,0,0"/>-->
+        <Image Source="/Assets/EtgarimLogo2.png" Margin="43,15,41,512"/>
+        <!--<Button Content="התחברות" BorderBrush="white" Background="#a1d27a" BorderThickness="0" FontSize="30" HorizontalAlignment="Left" Height="104" Margin="18,174,0,0" VerticalAlignment="Top" Width="364" Click="Button_Click"/>
+        <Button Content="אודות העמותה" FontSize="30" Background="#81b9e4" BorderThickness="0" Foreground="White" HorizontalAlignment="Left" Height="104" Margin="18,279,0,0" VerticalAlignment="Top" Width="364"/>
+        <Button Content="צור קשר" FontSize="30" Background="#555555" BorderThickness="0" HorizontalAlignment="Left" Height="104" Margin="18,384,0,0" VerticalAlignment="Top" Width="364"/>-->
+        <Image Source="/Assets/ButtonStart/B1.png" Margin="20,168,19,388" IsTapEnabled="True" Tapped="Button_Click"/>
+        <Image Source="/Assets/ButtonStart/B2.png" Margin="20,268,19,268" IsTapEnabled="True" Tapped="Button_Click3"/>
+        <Image Source="/Assets/ButtonStart/B3.png" Margin="20,368,19,148" IsTapEnabled="True" Tapped="Button_Click2"/>
+        <!--<Grid Background="#3e7001" VerticalAlignment="Bottom" Margin="0,0,0,0" Height="70" >
+            <AppBarButton x:Name="btn_Setting" Click="btn_Setting_Click"  Icon="Setting" VerticalAlignment="Center" HorizontalAlignment="Center" Label="הגדרות מיקום"/>
+        </Grid>-->
+    </Grid>
+
+</views:MvxWindowsPage>

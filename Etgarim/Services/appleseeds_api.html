@@ -1,0 +1,90 @@
+// REQUEST - for lesson instructors and students
+Post http://www.etgarim.tandemwise.com/get_lesson_contacts
+Make sure content-type is application/json and charset is UTF-8.
+
+{
+	"access_key": "SOME-ACCESS-KEY",      
+	"user_email": "user@etgarim.org.il",      
+	"course_id":"1942",
+	"lesson_date":"15/03/2015"
+}
+
+// VALID RESPONSE
+{
+	"err":"0",
+	"errdesc":"OK",
+	"instructors":[
+    {
+      "instructor_id": "12345",
+      "instructor_name": "Israel Israeli",
+      "instructor_phone": "050-1111111"},
+    {
+      "instructor_id": "54321",
+      "instructor_name": "Sara Cohen",
+      "instructor_phone": "050-1234567"},
+	],
+	"students":[
+    {
+      "student_id": "11111",
+      "student_name": "Avi Levi",
+      "student_phone": "050-7654321"},
+    {
+      "student_id": "22222",
+      "student_name": "Dani Hillel",
+      "student_phone": "050-2222222"},
+	]
+}
+
+// ERROR RESPONSE
+{
+	"err":"1",
+	"errdesc":"Some error occurred..."
+}
+
+// REQUEST - To set contact position
+Post http://www.etgarim.tandemwise.com/set_contact_pos
+Make sure content-type is application/json and charset is UTF-8.
+
+{
+	"access_key": "SOME-ACCESS-KEY",      
+	"user_email": "user@etgarim.org.il",      
+    "contact_id": "11111",
+	"contact_pos":"323950351130"
+}
+
+// VALID RESPONSE
+{
+	"err":"0",
+	"errdesc":"OK"
+}
+
+// ERROR RESPONSE
+{
+	"err":"1",
+	"errdesc":"Some error occurred..."
+}
+
+// REQUEST - To get contact position
+Post http://www.etgarim.tandemwise.com/get_contact_pos
+Make sure content-type is application/json and charset is UTF-8.
+
+{
+	"access_key": "SOME-ACCESS-KEY",      
+	"user_email": "user@etgarim.org.il",      
+    "contact_id": "11111"
+}
+
+// VALID RESPONSE
+{
+	"err":"0",
+	"errdesc":"OK",
+    "contact_id": "11111",
+	"contact_pos":"323950351130"
+}
+
+// ERROR RESPONSE
+{
+	"err":"1",
+	"errdesc":"Some error occurred..."
+}
+

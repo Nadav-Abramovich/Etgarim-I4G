@@ -1,0 +1,72 @@
+﻿<views:MvxWindowsPage 
+    xmlns:Maps="using:Windows.UI.Xaml.Controls.Maps" 
+    x:Class="Etgarim.Views.MapView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Etgarim.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:views="using:Cirrious.MvvmCross.WindowsCommon.Views"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:src="clr-namespace:Etgarim.Views"
+    xmlns:stufff="using:Etgarim"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Page.Resources>
+        <stufff:PosConverter x:Key="posconverter" />
+    </Page.Resources>
+    <!--<Page.BottomAppBar>
+        <CommandBar>
+            <AppBarButton Icon="Zoom"></AppBarButton>
+            <AppBarButton Icon="People">
+                <AppBarButton.Flyout>
+                    <MenuFlyout Placement="Top">
+                        <MenuFlyoutItem Text="TEST1" Tag="raiting"/>
+                        <MenuFlyoutItem Text="TEST2" Tag="raiting"/>
+                        <MenuFlyoutItem Text="TEST3" Tag="raiting"/>
+                    </MenuFlyout>
+                </AppBarButton.Flyout>
+            </AppBarButton>
+
+        </CommandBar>
+    </Page.BottomAppBar>-->
+    <Grid x:Name="MapGrid">
+
+        <Maps:MapControl x:Name="OmNaMap" MapServiceToken="AoBbDbbKo3EdB7A-JOte7ft-rXlqpyAjw-nCjWauo5IYQDH55v00oQ_tnaxiNR0O">
+            <Maps:MapItemsControl x:Name="asdf" ItemsSource="{Binding mapitems}">
+                <Maps:MapItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Maps:MapControl.Location="{Binding location, Converter={StaticResource posconverter}}" Maps:MapControl.NormalizedAnchorPoint="0,0">
+                            <Image Width="{Binding width}" Height="{Binding h}" Source="{Binding text}" IsTapEnabled="True" Tapped="Image_Tapped" Tag="{Binding GetTag}"></Image>
+                            <!--<TextBlock Foreground="Black" Text="{Binding name}"></TextBlock>-->
+                        </Grid>
+                    </DataTemplate>
+                </Maps:MapItemsControl.ItemTemplate>
+            </Maps:MapItemsControl>
+        </Maps:MapControl>
+        <!-- <ProgressBar x:Name="ProgBar" Height="667"/>-->
+
+        <Rectangle Opacity="0.6" Name="ErrorRect" Visibility="Collapsed" StrokeThickness="5" Stroke="Gray" Fill="White" Margin="72,471,69,69"/>
+        <TextBlock Opacity="0.6" Name="ErrorMsg" Visibility="Collapsed" Foreground="DarkRed" FontFamily="Comic Sans MS" Text="Network&#x0a; Problem" Margin="120,477,0,63" FontSize="40" HorizontalAlignment="Left" Width="259"/>
+        <Rectangle Opacity="0.5" Name="ListRect" Visibility="Collapsed"  Fill="Black" Margin="0,0,0,71"></Rectangle>
+        <ListView   HorizontalAlignment="Right" Visibility="Collapsed" Name="InNeedList" Margin="0,90,10,10">
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="HorizontalAlignment" Value="Right">
+                    </Setter>
+                </Style>
+            </ListView.ItemContainerStyle>
+        </ListView>
+        <TextBlock Name="HelpText" HorizontalAlignment="Right" Text="{Binding helptext}" Margin="0,37,-15,554" FontSize="30" Width="220" Visibility="Collapsed">
+        </TextBlock>
+        <Rectangle Fill="Black" HorizontalAlignment="Right" Height="75" Margin="0,568,0,0" VerticalAlignment="Top" Width="400"/>
+        <Image Name="PositionButton" Source="/Assets/MapButtons/Home.png" HorizontalAlignment="Left" Height="50" Margin="97,580,0,0" VerticalAlignment="Top" Width="50" IsTapEnabled="True" Tapped="PositionButton_Tapped"/>
+        <Image Name="DangerButton" Source="/Assets/MapButtons/People.png" HorizontalAlignment="Left" Height="50" Margin="178,580,0,0" VerticalAlignment="Top" Width="50" IsTapEnabled="True" Tapped="DangerButton_Tapped"/>
+        <Image Name="ChangeMap" Source="/Assets/MapButtons/World.png" HorizontalAlignment="Left" Height="50" Margin="259,580,0,0" VerticalAlignment="Top" Width="50" IsTapEnabled="True" Tapped="ChangeMap_Tapped"/>
+        <!--<Button Background="LightGray" Foreground="Black" Name="DangerButton"  Content="In Danger" Margin="163,542,0,53" Click="Button_Click_2" RenderTransformOrigin="0.299,0.178" Width="237" Height="72">
+        </Button>
+        <Button Foreground="Black" Background="White"  Name="ZoomButton"  Content="In Danger" Margin="11,542,0,53" Click="Button_Click_1" RenderTransformOrigin="0.299,0.178" Width="82" Height="72">
+        </Button>-->
+        <Image x:Name="Loading" Source="/Assets/loading.png" Stretch="UniformToFill" Visibility="Visible"/>
+    </Grid> 
+</views:MvxWindowsPage>
